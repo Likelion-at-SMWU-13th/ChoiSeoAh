@@ -8,20 +8,28 @@
 <body>
     <div>
         <header>
-            <img src="./images/숙멋사 로고 1.svg" />
-            <img src="./images/숙멋사 로고명 1.svg" />
+            <img src ="./images/숙멋사 로고명 1.svg" />
+            <h2>안녕하세요 :) </br> 아기사자님에 대해 알려주세요</h2>
         </header>
-            <form name="login" method="post">
-                <input type="text" name="username" placeholder="아이디" />
-                <input type="password" name="password" placeholder="비밀번호" />
-                <button type="submit">로그인</button>
-            </form>
-            <aside>
-                <p>아직 회원이 아니신가요?</p>
-                <a href="./signup.html"title="회원가입">회원가입</a>
-            </aside>
-        
-    </div>
-    
+        <form name="signup" method="post">
+            <section class="signup_section">
+                <span>이름</span>
+                <input name="first_name" type="text" placeholder="김사자" required />
+            </section>
+            <section class="signup_section">
+                <span>아이디</span>
+                <input name="username" type="text" placeholder="username" required />
+            </section>
+            <section calss="signup_section">
+                <span>비밀번호</span>
+                <input name="password1" type="password" placeholder="password" required />
+            </section>
+            <section calss="signup_section">
+                <span>비밀번호 확인</span>
+                <input name="password2" type="password" placeholder="password" required />
+            </section>
+            <button class="signup_btn" type="submit">회원가입</button>
+        </form>
+    </div> 
 </body>
 </html>
