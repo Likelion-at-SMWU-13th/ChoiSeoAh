@@ -1,0 +1,178 @@
+@font-face {
+    font-family: 'YiSunShinDotumM';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/YiSunShinDotumM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #1c1c1c;
+    font-family: "YiSunShinDotumM";
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 헤더 스타일 */
+header {
+    text-align: center;
+    margin-top: 10px;
+    color: #FFF;
+}
+
+header img {
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+}
+
+/* h2 스타일 */
+h2 {
+    color: #FFF;
+    text-align: center;
+    font-family: "YiSunShin Dotum M";
+    font-size: 30px;
+    font-weight: 400;
+}
+
+
+
+
+.container {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    position: relative;
+    top: -20px; /* 20px 위로 이동 */
+}
+    
+
+
+
+.frame {
+    display: flex;
+    width: 300px;
+    height: 50px;
+    padding: 11.715px 13.667px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9.762px;
+    flex-shrink: 0;
+    border-radius: 97px;
+    background: var(--System-Background-Dark-Base-Primary, #000);
+    backdrop-filter: blur(39.04991912841797px);
+    position: relative;  /* 위치 속성 추가 */
+    top: 20px; /* 20px 아래로 이동 */
+}
+
+
+
+/* 아이콘 기본 스타일 */
+.icon {
+    position: absolute;
+    width: 53px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%; /* 원형 아이콘 */
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* 첫 번째 아이콘 위치 */
+.icon1 {
+    top: 13px;
+    right: 60px;
+}
+
+/* 두 번째 아이콘 위치 */
+.icon2 {
+    top: 13px;
+    right: 10px;
+}
+
+/* 아이콘 이미지 크기 */
+.icon img {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 45/45;
+}
+
+/* 이름 스타일 */
+.name {
+    position: absolute;
+    top: 35%;      /* 수직 중앙 */
+    left: 38%;     /* 수평 중앙 */
+    transform: translate(-50%, -50%); /* 정확한 중앙으로 이동 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 88.038px;
+    height: 34.682px;
+    color: #FFF;
+    font-family: "YiSunShin Dotum B";
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.371px;
+    text-align: center;
+}
+
+
+.AboutMe {
+    position: absolute; /* 화면에 고정 */
+    top: 82.6%; /* 화면 세로 중앙 */
+    left: 50%; /* 화면 가로 중앙 */
+    transform: translate(-50%, -50%); /* 완벽한 중앙 정렬 */
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.AboutMe a {
+    display: inline-block;
+    color: #1c1c1c !important; /* 강제 적용 */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center; /* 텍스트 가운데 정렬 */
+    width: 100%; /* 링크가 포함된 박스를 100% 너비로 설정 */
+}
+
+
+
+
+/* 링크 스타일 */
+#to_signup {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* 파트 스타일 */
+.part {
+    position: absolute;
+    top: 65%;      /* 수직 중앙 */
+    left: 39.9%;     /* 수평 중앙 */
+    transform: translate(-50%, -50%); /* 정확한 중앙으로 이동 */
+    color: #FFF;
+    font-family: "YiSunShin Dotum L";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24.406px;
+    letter-spacing: 0.37px;
+}
