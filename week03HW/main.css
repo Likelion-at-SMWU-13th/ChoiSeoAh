@@ -26,11 +26,22 @@ header {
     text-align: center;
     margin-top: 10px;
     color: #FFF;
+    position: relative; 
 }
 
+#dynamic {
+    font-family: "YiSunShinDotumM", sans-serif;
+    font-size: 24px;
+    color: #fff;
+    white-space: pre-wrap;
+    padding-top: 20px; /* 위쪽 여백을 20px로 설정하여 텍스트를 아래로 내립니다 */
+}
+
+
+
 header img {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     aspect-ratio: 1/1;
     flex-shrink: 0;
 }
@@ -40,7 +51,7 @@ h2 {
     color: #FFF;
     text-align: center;
     font-family: "YiSunShin Dotum M";
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 400;
 }
 
@@ -48,13 +59,13 @@ h2 {
 
 
 .container {
+    position: fixed;
+    top: 60%;  /* 위쪽에서 20px 떨어진 위치 */
+    right: 37%; /* 오른쪽에서 20px 떨어진 위치 */
     display: flex;
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    position: relative;
-    top: -20px; /* 20px 위로 이동 */
+    justify-content: center;
+    align-items: center;
 }
-    
 
 
 
@@ -70,8 +81,10 @@ h2 {
     border-radius: 97px;
     background: var(--System-Background-Dark-Base-Primary, #000);
     backdrop-filter: blur(39.04991912841797px);
-    position: relative;  /* 위치 속성 추가 */
-    top: 20px; /* 20px 아래로 이동 */
+    position: fixed;  /* 위치 속성 추가 */
+    top: 75%;  /* 위쪽에서 20px 떨어진 위치 */
+    right: 39%;
+    
 }
 
 
@@ -132,24 +145,24 @@ h2 {
     text-align: center;
 }
 
-
 .AboutMe {
-    position: absolute; /* 화면에 고정 */
-    top: 82.6%; /* 화면 세로 중앙 */
+    position: absolute; 
+    top: 64%; /* 화면 상단에서 70% 위치에 배치 (원하는 위치로 조정) */
     left: 50%; /* 화면 가로 중앙 */
-    transform: translate(-50%, -50%); /* 완벽한 중앙 정렬 */
+    transform: translateX(-50%); /* 정확한 중앙 정렬 */
     padding: 10px 20px;
     border-radius: 8px;
+  
 }
 
 .AboutMe a {
-    display: inline-block;
+    
     color: #1c1c1c !important; /* 강제 적용 */
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 16px;
     text-align: center; /* 텍스트 가운데 정렬 */
-    width: 100%; /* 링크가 포함된 박스를 100% 너비로 설정 */
+    
 }
 
 
