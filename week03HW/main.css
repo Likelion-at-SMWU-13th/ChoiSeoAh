@@ -29,19 +29,13 @@ header {
     position: relative; 
 }
 
-#dynamic {
-    font-family: "YiSunShinDotumM", sans-serif;
-    font-size: 24px;
-    color: #fff;
-    white-space: pre-wrap;
-    padding-top: 20px; /* 위쪽 여백을 20px로 설정하여 텍스트를 아래로 내립니다 */
-}
+
 
 
 
 header img {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     aspect-ratio: 1/1;
     flex-shrink: 0;
 }
@@ -53,6 +47,7 @@ h2 {
     font-family: "YiSunShin Dotum M";
     font-size: 28px;
     font-weight: 400;
+    top: 25%;
 }
 
 
@@ -60,8 +55,8 @@ h2 {
 
 .container {
     position: fixed;
-    top: 60%;  /* 위쪽에서 20px 떨어진 위치 */
-    right: 37%; /* 오른쪽에서 20px 떨어진 위치 */
+    top: 68%;  
+    right: 37%; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,8 +76,8 @@ h2 {
     border-radius: 97px;
     background: var(--System-Background-Dark-Base-Primary, #000);
     backdrop-filter: blur(39.04991912841797px);
-    position: fixed;  /* 위치 속성 추가 */
-    top: 75%;  /* 위쪽에서 20px 떨어진 위치 */
+    position: fixed; 
+    top: 82%;  
     right: 39%;
     
 }
@@ -98,7 +93,7 @@ h2 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 50%; /* 원형 아이콘 */
+    border-radius: 50%; 
     transition: all 0.3s ease;
 }
 
@@ -128,9 +123,9 @@ h2 {
 /* 이름 스타일 */
 .name {
     position: absolute;
-    top: 35%;      /* 수직 중앙 */
-    left: 38%;     /* 수평 중앙 */
-    transform: translate(-50%, -50%); /* 정확한 중앙으로 이동 */
+    top: 35%;      
+    left: 38%;    
+    transform: translate(-50%, -50%); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,9 +142,9 @@ h2 {
 
 .AboutMe {
     position: absolute; 
-    top: 64%; /* 화면 상단에서 70% 위치에 배치 (원하는 위치로 조정) */
-    left: 50%; /* 화면 가로 중앙 */
-    transform: translateX(-50%); /* 정확한 중앙 정렬 */
+    top: 72%;
+    left: 50%; 
+    transform: translateX(-50%); 
     padding: 10px 20px;
     border-radius: 8px;
   
@@ -157,11 +152,11 @@ h2 {
 
 .AboutMe a {
     
-    color: #1c1c1c !important; /* 강제 적용 */
+    color: #1c1c1c !important; 
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 16px;
-    text-align: center; /* 텍스트 가운데 정렬 */
+    text-align: center; 
     
 }
 

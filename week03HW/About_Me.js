@@ -1,5 +1,5 @@
-const content = "안녕하세요:)\n멋쟁이 사자처럼 13기\n최서아입니다!"
-// 타이핑 하고싶은 텍스트 작성
+const content = "안녕하세요! \n저는 13기 아기사자 최서아입니다 ! \n열심히 하겠습니다 !! "
+
 const text = document.getElementById("dynamic");
 let index = 0;
 let txt = "";

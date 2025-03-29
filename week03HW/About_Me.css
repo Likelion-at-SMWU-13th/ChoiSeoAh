@@ -12,7 +12,7 @@ body {
 }
 
 .nav-bar {
-    position: relative; /* 자식 요소(menu, detail) 위치를 기준으로 설정 */
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,18 +23,23 @@ body {
 
 
 .menu {
-    position: absolute; /* 부모 요소(nav-bar)를 기준으로 위치 조정 */
-    left: 20%; /* 화면 오른쪽에서 10% 떨어짐 */
-    top: 58px; /* 화면 위쪽에서 50px 떨어짐 */
+    position: absolute; 
+    left: 20%; 
+    top: 58px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
 }
 
+.image2 {
+    position: relative;
+    right: 50px; 
+}
+
 .detail {
     position: absolute;
-    top: 39.3%; /* 값을 줄여서 더 위로 이동 */
+    top: 39.3%; 
     left: 70%;
     transform: translateX(-50%);
     width: 648px;
@@ -43,11 +48,24 @@ body {
 
 .Message {
     position: absolute;
-    top: 160px; /* 값을 줄여서 더 위로 이동 */
-    left: 58%;
+    top: 170px; 
+    left: 55%;
     transform: translateX(-50%);
     width: 648px;
     height: 556px;
 
 }
+
+
+#dynamic {
+    font-family: "YiSunShinDotumL", sans-serif;
+    font-size: 15px;
+    color: #1c1c1c;
+    white-space: pre-wrap;
+    padding-top: 20px; 
+    position: absolute;
+    top: -16px;
+    left: 3%;
+}
+
 
