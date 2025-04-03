@@ -20,6 +20,8 @@ from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/',views.signup,name='signup'),
+    path('signup/',views.signup,name='signup'),# 회원가입 페이지
     path('',views.login,name='login'),  # 로그인 페이지
+    path('main/',views.main,name="main"), # 메인 페이지
+    path('logout/',views.logout,name='logout'), # 로그아웃 페이지
 ]
