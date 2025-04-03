@@ -21,4 +21,5 @@ from accounts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/',views.signup,name='signup'),
+    path('',views.login,name='login'),  # 로그인 페이지
 ]
