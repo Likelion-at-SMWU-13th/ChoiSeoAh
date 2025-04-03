@@ -24,4 +24,6 @@ urlpatterns = [
     path('',views.login,name='login'),  # 로그인 페이지
     path('main/',views.main,name="main"), # 메인 페이지
     path('logout/',views.logout,name='logout'), # 로그아웃 페이지
+    path('mypage/',views.mypage,name='mypage'), # 마이페이지
+    path('about_me/', views.about_me, name='about_me')
 ]
