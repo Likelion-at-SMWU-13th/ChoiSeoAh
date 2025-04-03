@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} <!--정적 파일을 가져오기 위한 태그-->
 
 <!DOCTYPE html>
 <html>
@@ -11,11 +11,11 @@
 <body>
     <div>
     <header>
-        <img src="{% static 'images/숙멋사 로고명 1.svg' %}" />
+        <img src="{% static 'images/숙멋사로고명 1.svg' %}" />
         <h2>안녕하세요 :) </br> 아기사자님에 대해 알려주세요</h2>
     </header>
     <form name="signup" method="post" onsubmit="return checkPassword()">
-    {% csrf_token %}
+    {% csrf_token %} <!--CSRF 토큰을 사용하여 보안 강화-->
     <!--이름-->
     <section class="signup_section">
         <span>이름</span>
