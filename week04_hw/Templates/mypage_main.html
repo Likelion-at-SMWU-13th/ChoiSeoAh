@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mypage_main.css' %}" />
+    <title>🦁 MyPage</title>
+</head>
+<body>
+
+    <div class="nav-bar">
+       <img src="{% static 'images/Navigation Bar.svg' %}"/>
+    </div>
+    <!-- 헤더 섹션 -->
+    <header>
+        <img src="{% static 'images/image 4.svg' %}" alt='Logo' />
+        
+        <h2>안녕하세요 :) <br> 멋쟁이 사자처럼 13기 <br> 백엔드 아기사자 최서아입니다!</h2> 
+    </header>
+
+    <!-- 메뉴 아이콘 -->
+    <div class="container">
+        <img src="{% static 'images/Compact Menu.svg' %}"/>
+    </div>
+    
+    <!-- About Me와 Goal 링크 -->
+    <aside class="AboutMe">
+        <a id="to_signup" href="{% url 'about_me' %}"  title="About_Me">About Me</a>
+    
+    </aside>
+        
+
+    
+    <!-- 프로필 프레임 -->
+    <div class="frame">
+        <img src="{% static 'images/profile.svg' %}" alt="Profile Image">
+    
+        <!-- 첫 번째 아이콘 -->
+        <div class="icon icon1">
+            <a href="https://www.instagram.com/seeoah?igsh=d3hyNWs0ZzV0Ynpj&utm_source=qr" target="_blank">
+                <img src="{% static 'images/insta.svg' %}" alt="Instagram Icon">
+            </a>
+        </div>
+    
+        <!-- 두 번째 아이콘 -->
+        <div class="icon icon2">
+            <a href="https://github.com/seeoah/seoah.git" target="_blank">
+                <img src="{% static 'images/github.svg' %}" alt="GitHub Icon">
+            </a>
+        </div>
+
+        <div class="name">
+            <span>seeoah</span>
+        </div>
+
+        <div class="part">
+            <span>BACKEND</span>
+        </div>
+    </div>
+</body>
+</html>
