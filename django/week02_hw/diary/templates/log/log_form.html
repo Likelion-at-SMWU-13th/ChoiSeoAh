@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}log_form{% endblock %}
+
+{% block content %}
+<h1>일기 쓰기</h1>
+<form method="post">
+    {% csrf_token %}
+    <label for="title">제목:</label><br>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="content">내용:</label><br>
+    <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+
+    <button type="submit">저장하기</button>
+</form>
+{% endblock %}
