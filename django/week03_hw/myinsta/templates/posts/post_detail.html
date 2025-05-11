@@ -1,0 +1,25 @@
+<h1>{{ post.content }}</h1>
+<p>작성자: {{ post.writer }}</p>
+<p>작성일: {{ post.created_at }}</p>
+
+{% if post.image %}
+    <img src="{{ post.image.url }}" alt="Post Image">
+{% else %}
+    <p>이미지가 없습니다.</p>
+{% endif %}
+
+<h2>댓글</h2>
+{% if comments %}
+    {% for comment in comments %}
+        <div>
+            <p><strong>{{ comment.writer }}</strong>: {{ comment.content }}</p>
+            <p><small>{{ comment.created_at }}</small></p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>댓글이 없습니다.</p>
+{% endif %}
+
+<!-- 댓글 작성 링크 -->
+<a href="{% url 'posts:create-comment' post.id %}">댓글 작성하기</a>
+
