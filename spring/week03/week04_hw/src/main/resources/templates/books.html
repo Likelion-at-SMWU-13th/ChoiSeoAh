@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Books List</title>
+</head>
+<body>
+
+<h1>📚 도서 목록</h1>
+
+<h2>📖 등록된 도서</h2>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+  <tr>
+    <th>제목</th>
+    <th>저자</th>
+    <th>가격</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <td th:text="${book.title}">제목</td>
+    <td th:text="${book.author}">저자</td>
+    <td th:text="${#numbers.formatInteger(book.price, 3, 'COMMA') + '원'}">가격</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>📝 도서 추가</h2>
+<form action="/books" method="post">
+  <fieldset>
+    <legend>도서 정보</legend>
+    <table>
+      <tr>
+        <td><label for="title">제목:</label></td>
+        <td><input type="text" id="title" name="title" required></td>
+      </tr>
+      <tr>
+        <td><label for="author">저자:</label></td>
+        <td><input type="text" id="author" name="author" required></td>
+      </tr>
+      <tr>
+        <td><label for="price">가격:</label></td>
+        <td><input type="number" id="price" name="price" step="any" required></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right">
+          <button type="submit">도서 추가 ➕</button>
+        </td>
+      </tr>
+    </table>
+  </fieldset>
+</form>
+
+</body>
+</html>
