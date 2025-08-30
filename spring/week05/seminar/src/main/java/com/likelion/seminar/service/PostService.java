@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+// Service -> 비지니스 로직 처리
 @Service
 public class PostService {
     private static final Logger logger = LoggerFactory.getLogger(PostService.class);
