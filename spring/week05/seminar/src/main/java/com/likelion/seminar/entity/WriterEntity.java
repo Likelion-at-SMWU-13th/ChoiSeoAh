@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,11 +23,11 @@ public class WriterEntity {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
     @ToString.Exclude
-    private List<PostEntity> posts;
+    private List<PostEntity> posts =  new ArrayList<>();
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST)
     @ToString.Exclude
-    private List<CommentEntity> comments;
+    private List<CommentEntity> comments = new ArrayList<>();
 
 
 
