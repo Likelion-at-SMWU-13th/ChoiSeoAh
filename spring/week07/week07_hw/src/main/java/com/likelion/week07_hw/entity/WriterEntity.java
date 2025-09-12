@@ -1,4 +1,4 @@
-package com.likelion.seminar.entity;
+package com.likelion.week07_hw.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,16 +18,29 @@ import java.util.List;
 public class WriterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long   id;
-    private String  writer;
+    private Long   id;
+    private String  name;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.PERSIST)
     @ToString.Exclude
     private List<PostEntity> posts =  new ArrayList<>();
 
-    @OneToMany(mappedBy = "comment", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "writer", cascade = CascadeType.PERSIST)
     @ToString.Exclude
     private List<CommentEntity> comments = new ArrayList<>();
+
+    public void addPost(PostEntity post) {
+        posts.add(post);
+        post.setWriter(this);
+    }
+
+    public void addComment(CommentEntity comment) {
+        comments.add(comment);
+        comment.setWriter(this);
+    }
+
+
+
 
 
 

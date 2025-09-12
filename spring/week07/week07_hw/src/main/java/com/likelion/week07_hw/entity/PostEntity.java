@@ -1,31 +1,25 @@
-package com.likelion.seminar.entity;
+package com.likelion.week07_hw.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Table(name ="comment")
+@Table(name ="post")
 @Getter
 @Setter
 @NoArgsConstructor
-
-public class CommentEntity {
+public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String comment;
+    private Long   id;
+    private String  title;
+    private String  content;
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    @ToString.Exclude
-    private PostEntity post;
 
     @ManyToOne
     @JoinColumn(name = "writer_id")
-    @ToString.Exclude
     private WriterEntity writer;
 
 
