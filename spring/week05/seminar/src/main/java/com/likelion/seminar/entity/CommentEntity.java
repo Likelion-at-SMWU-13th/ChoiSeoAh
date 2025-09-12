@@ -4,30 +4,28 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name ="post")
+@Table(name ="comment")
 @Getter
 @Setter
 @NoArgsConstructor
-public class PostEntity {
+
+public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long   id;
-    private String  title;
-    private String  content;
+    private Integer id;
+    private String comment;
 
-
-    @JoinColumn(name = "board_id")
-    @ManyToOne(
-            targetEntity = BoardEntity.class,
-            fetch = FetchType.LAZY
-
-    )
-    private BoardEntity boardEntity;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    @ToString.Exclude
+    private PostEntity post;
 
     @ManyToOne
     @JoinColumn(name = "writer_id")
+    @ToString.Exclude
     private WriterEntity writer;
 
 
