@@ -1,4 +1,4 @@
-package com.likelion.seminar.entity;
+package com.likelion.week07_hw.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,18 +13,10 @@ import lombok.Setter;
 public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long   id;
+    private Long   id;
     private String  title;
     private String  content;
 
-
-    @JoinColumn(name = "board_id")
-    @ManyToOne(
-            targetEntity = BoardEntity.class,
-            fetch = FetchType.LAZY
-
-    )
-    private BoardEntity boardEntity;
 
     @ManyToOne
     @JoinColumn(name = "writer_id")
