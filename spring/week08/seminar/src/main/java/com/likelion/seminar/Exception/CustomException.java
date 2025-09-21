@@ -1,7 +1,5 @@
 package com.likelion.seminar.Exception;
 
-
-
 public class CustomException extends RuntimeException {
 
     private final HttpStatus httpStatus;
