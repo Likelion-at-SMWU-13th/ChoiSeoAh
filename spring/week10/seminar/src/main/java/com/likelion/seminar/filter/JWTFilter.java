@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class JWTFilter extends OncePerRequestFilter {
 
@@ -24,6 +25,8 @@ public class JWTFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
+        String accessToken = request.getHeader("access");
 
         // 요청에서 Authorization 헤더를 찾음
         String authorization = request.getHeader("Authorization");
@@ -51,9 +54,21 @@ public class JWTFilter extends OncePerRequestFilter {
             return;
         }
 
+        // 토큰이 access인지 확인함
+        String category =  jwtUtil.getCategory(accessToken);
+
+        if(!category.equals("access")) {
+
+            PrintWriter writer = response.getWriter();
+            writer.print("invalid access token");
+
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
         // 토큰에서 username과 role 획득
-        String username = jwtUtil.getUsername(token);
-        String role = jwtUtil.getRole(token);
+        String username = jwtUtil.getUsername(accessToken);
+        String role = jwtUtil.getRole(accessToken);
 
         // User를 생성하여 값 설정
         User user = new User();
