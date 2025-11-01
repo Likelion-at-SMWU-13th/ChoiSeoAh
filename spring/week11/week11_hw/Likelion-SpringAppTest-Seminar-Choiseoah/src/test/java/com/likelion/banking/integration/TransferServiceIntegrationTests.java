@@ -1,5 +1,6 @@
 package com.likelion.banking.integration;
 
+import static org.mockito.Mockito.*;
 import com.likelion.banking.domain.Account;
 import com.likelion.banking.exception.AccountNotFoundException;
 import com.likelion.banking.repository.AccountRepository;
@@ -9,7 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -31,6 +35,7 @@ import static org.mockito.BDDMockito.*;
  * - @Transactional 등 스프링 기능이 정상 작동하는지 확인
  */
 @SpringBootTest
+@EnableTransactionManagement
 class TransferServiceIntegrationTests {
 
     @MockBean
@@ -38,6 +43,9 @@ class TransferServiceIntegrationTests {
 
     @Autowired
     private TransferService transferService;
+
+    @MockBean
+    private PlatformTransactionManager platformTransactionManager;
 
     /**
      * 실습 2-1: 스프링 통합 테스트
@@ -58,13 +66,22 @@ class TransferServiceIntegrationTests {
         given(accountRepository.findById(2L))
                 .willReturn(Optional.of(receiver));
 
+        given(platformTransactionManager.getTransaction(any()))
+                .willReturn(mock(TransactionStatus.class));
+
         // TODO: When - 메서드 실행
         transferService.transferMoney(1L,2L,new BigDecimal(100));
 
-        
+
         // TODO: Then - 결과 검증
         verify(accountRepository).changeAmount(1L,new BigDecimal(900));
         verify(accountRepository).changeAmount(2L,new BigDecimal(1100));
+
+        verify(platformTransactionManager, atLeastOnce()).getTransaction(any());
+        verify(platformTransactionManager, atLeastOnce()).commit(any());
+        verify(platformTransactionManager, never()).rollback(any());
+
+
     }
 
 
@@ -74,6 +91,8 @@ class TransferServiceIntegrationTests {
         // TODO: Given - 테스트 데이터 준비
         given(accountRepository.findById(999L))
                 .willReturn(Optional.empty());
+        given(platformTransactionManager.getTransaction(any()))
+                .willReturn(mock(TransactionStatus.class));
 
         // TODO: When + Then
         assertThrows(AccountNotFoundException.class, () -> {
@@ -82,6 +101,11 @@ class TransferServiceIntegrationTests {
 
         verify(accountRepository, never()).
                 changeAmount(anyLong(), any(BigDecimal.class));
+
+        // 롤백이 시도되었는지 검증함
+        verify(platformTransactionManager, atLeastOnce()).getTransaction(any());
+        verify(platformTransactionManager, atLeastOnce()).rollback(any());
+        verify(platformTransactionManager, never()).commit(any());
     }
 
     @Test
@@ -93,6 +117,8 @@ class TransferServiceIntegrationTests {
                 .willReturn(Optional.of(sender));
         given(accountRepository.findById(999L))
                 .willReturn(Optional.empty());
+        given(platformTransactionManager.getTransaction(any()))
+                .willReturn(mock(TransactionStatus.class));
 
         AccountNotFoundException exception = assertThrows(
                 AccountNotFoundException.class,
@@ -102,6 +128,11 @@ class TransferServiceIntegrationTests {
         assertTrue(exception.getMessage().contains("Receiver"));
         verify(accountRepository,never())
                 .changeAmount(anyLong(),any(BigDecimal.class));
+
+        // 롤백이 시도되었는지 검증함
+        verify(platformTransactionManager, atLeastOnce()).getTransaction(any());
+        verify(platformTransactionManager, atLeastOnce()).rollback(any());
+        verify(platformTransactionManager, never()).commit(any());
     }
 }
 
