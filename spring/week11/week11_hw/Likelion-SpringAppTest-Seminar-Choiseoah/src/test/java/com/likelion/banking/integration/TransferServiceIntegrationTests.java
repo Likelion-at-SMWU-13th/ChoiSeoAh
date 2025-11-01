@@ -1,6 +1,7 @@
 package com.likelion.banking.integration;
 
 import com.likelion.banking.domain.Account;
+import com.likelion.banking.exception.AccountNotFoundException;
 import com.likelion.banking.repository.AccountRepository;
 import com.likelion.banking.service.TransferService;
 import org.junit.jupiter.api.DisplayName;
@@ -8,10 +9,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.BDDMockito.*;
 
 /**
@@ -63,10 +67,41 @@ class TransferServiceIntegrationTests {
         verify(accountRepository).changeAmount(2L,new BigDecimal(1100));
     }
 
-    /**
-     * 실습 2-2: 단위 테스트와 실행 시간 비교 (선택)
-     * 
-     * 이 테스트는 작성하지 않아도 됩니다.
-     * 대신 전체 테스트 실행 시간을 비교해보세요!
-     */
+
+    @Test
+    @DisplayName("예외 플로우: 발신인 계좌를 찾을 수 없으면 예외가 발생한다.")
+    void moneyTransferIntegrationTest() {
+        // TODO: Given - 테스트 데이터 준비
+        given(accountRepository.findById(999L))
+                .willReturn(Optional.empty());
+
+        // TODO: When + Then
+        assertThrows(AccountNotFoundException.class, () -> {
+            transferService.transferMoney(999L,2L, new BigDecimal(100));
+        });
+
+        verify(accountRepository, never()).
+                changeAmount(anyLong(), any(BigDecimal.class));
+    }
+
+    @Test
+    @DisplayName("예외 플로우: 수취인 계좌를 찾을 수 없으면 예외가 발생한다.")
+    void moneyTransferReceiverAccountNotFound() {
+        Account sender = new Account(1L, "John", new BigDecimal(1000));
+
+        given(accountRepository.findById(1L))
+                .willReturn(Optional.of(sender));
+        given(accountRepository.findById(999L))
+                .willReturn(Optional.empty());
+
+        AccountNotFoundException exception = assertThrows(
+                AccountNotFoundException.class,
+                () -> transferService.transferMoney(1L,999L,new BigDecimal(100))
+        );
+
+        assertTrue(exception.getMessage().contains("Receiver"));
+        verify(accountRepository,never())
+                .changeAmount(anyLong(),any(BigDecimal.class));
+    }
 }
+
